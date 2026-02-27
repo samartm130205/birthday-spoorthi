@@ -28,12 +28,43 @@ body {
     object-fit: cover;
     border-radius: 15px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-    opacity: 0.35;
+    opacity: 0.4;
+    cursor: pointer;
+    animation: float 8s ease-in-out infinite;
+    transition: all 0.4s ease;
+}
+
+/* floating movement */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Zoomed image */
+.zoomed {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) scale(2) !important;
+    width: 280px !important;
+    height: 360px !important;
+    opacity: 1 !important;
+    z-index: 999;
+    animation: none;
+}
+
+/* Overlay */
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 998;
 }
 
 /* Center card */
 .card {
-    position: absolute;
+    position: relative;
     background: white;
     padding: 30px;
     border-radius: 25px;
@@ -41,9 +72,9 @@ body {
     box-shadow: 0 12px 30px rgba(0,0,0,0.25);
     width: 85%;
     max-width: 420px;
-    left: 50%;
+    margin: auto;
     top: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateY(-50%);
 }
 
 h1 {
@@ -59,7 +90,7 @@ h1 {
 .heart {
     font-size: 40px;
     animation: beat 1s infinite;
-    margin-top: 12px;
+    margin-top: 10px;
 }
 
 @keyframes beat {
@@ -67,13 +98,12 @@ h1 {
     50% { transform: scale(1.25); }
 }
 
-/* Sparkles */
+/* Confetti */
 .confetti {
     position: fixed;
     top: -10px;
     width: 10px;
     height: 10px;
-    border-radius: 50%;
     animation: fall linear forwards;
     z-index: 100;
 }
@@ -89,7 +119,6 @@ h1 {
 
 <body>
 
-<!-- Background Images (NO images/ folder) -->
 <div class="collage">
     <img src="1000037570.jpeg" style="top:5%; left:8%;">
     <img src="1000037580.jpeg" style="top:20%; right:10%;">
@@ -98,7 +127,6 @@ h1 {
     <img src="1000375158.jpeg" style="top:40%; left:35%;">
 </div>
 
-<!-- Center Card -->
 <div class="card">
     <h1>Happiest Birthday Sassa 💝🐇</h1>
 
@@ -115,6 +143,7 @@ h1 {
 </div>
 
 <script>
+// Confetti forever
 function createConfetti() {
     const confetti = document.createElement("div");
     confetti.className = "confetti";
@@ -124,12 +153,31 @@ function createConfetti() {
         [Math.floor(Math.random() * 5)];
     confetti.style.animationDuration = (Math.random() * 3 + 3) + "s";
     document.body.appendChild(confetti);
-
     setTimeout(() => confetti.remove(), 6000);
 }
-
-/* Keep sparkles falling UNTIL site is closed */
 setInterval(createConfetti, 150);
+
+// Image zoom on tap
+const images = document.querySelectorAll(".collage img");
+
+images.forEach(img => {
+    img.addEventListener("click", () => {
+        if (img.classList.contains("zoomed")) {
+            img.classList.remove("zoomed");
+            document.querySelector(".overlay")?.remove();
+        } else {
+            images.forEach(i => i.classList.remove("zoomed"));
+            const overlay = document.createElement("div");
+            overlay.className = "overlay";
+            overlay.onclick = () => {
+                img.classList.remove("zoomed");
+                overlay.remove();
+            };
+            document.body.appendChild(overlay);
+            img.classList.add("zoomed");
+        }
+    });
+});
 </script>
 
 </body>
