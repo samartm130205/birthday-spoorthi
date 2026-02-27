@@ -8,71 +8,61 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', sans-serif;
     height: 100vh;
     overflow: hidden;
+    font-family: 'Segoe UI', sans-serif;
     background: linear-gradient(to right, #ffdde1, #ee9ca7);
 }
 
-/* Background collage */
-.collage {
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-}
-
+/* Floating Images */
 .collage img {
     position: absolute;
-    width: 140px;
-    height: 180px;
+    width: 130px;
+    height: 170px;
     object-fit: cover;
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-    opacity: 0.4;
-    cursor: pointer;
-    animation: float 8s ease-in-out infinite;
+    border-radius: 16px;
+    opacity: 0.5;
+    animation: float 7s ease-in-out infinite;
     transition: transform 0.4s ease, opacity 0.4s ease;
 }
 
 .collage img:active {
-    transform: scale(1.5);
+    transform: scale(1.8);
     opacity: 1;
+    z-index: 10;
 }
 
-/* floating images */
+/* Floating animation */
 @keyframes float {
-    0% { transform: translate(0, 0); }
-    50% { transform: translate(15px, -25px); }
-    100% { transform: translate(0, 0); }
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-25px); }
+    100% { transform: translateY(0); }
 }
 
-/* Moving text */
+/* Moving Text */
 .text {
     position: absolute;
-    width: 100%;
-    text-align: center;
-    top: 40%;
-    animation: moveText 10s linear infinite alternate;
     color: black;
-    padding: 20px;
+    text-align: center;
+    width: 90%;
+    left: 5%;
+    font-size: 18px;
+    animation: moveText 12s linear infinite;
 }
 
 @keyframes moveText {
-    0% { transform: translate(-30px, -30px); }
-    50% { transform: translate(30px, 20px); }
-    100% { transform: translate(-20px, 30px); }
+    0%   { top: 10%; left: 5%; }
+    25%  { top: 30%; left: 50%; }
+    50%  { top: 55%; left: 10%; }
+    75%  { top: 35%; left: 40%; }
+    100% { top: 10%; left: 5%; }
 }
 
 h1 {
-    font-size: 28px;
+    font-size: 26px;
 }
 
-.message {
-    font-size: 16px;
-    line-height: 1.6;
-}
-
-/* Gift button */
+/* Gift Box */
 .gift-box {
     position: fixed;
     bottom: 20px;
@@ -80,13 +70,12 @@ h1 {
     transform: translateX(-50%);
     font-size: 60px;
     cursor: pointer;
-    z-index: 200;
     animation: bounce 1.5s infinite;
 }
 
 @keyframes bounce {
-    0%,100% { transform: translateX(-50%) translateY(0); }
-    50% { transform: translateX(-50%) translateY(-10px); }
+    0%,100% { transform: translate(-50%, 0); }
+    50% { transform: translate(-50%, -12px); }
 }
 
 /* Bunny */
@@ -95,30 +84,21 @@ h1 {
     bottom: -200px;
     left: 50%;
     transform: translateX(-50%);
-    width: 150px;
-    display: none;
-    animation: bunnyUp 1s forwards, dance 1s infinite;
-    z-index: 300;
+    width: 200px;
+    transition: bottom 1s ease;
 }
 
-@keyframes bunnyUp {
-    to { bottom: 120px; }
-}
-
-@keyframes dance {
-    0% { transform: translateX(-50%) rotate(-5deg); }
-    50% { transform: translateX(-50%) rotate(5deg); }
-    100% { transform: translateX(-50%) rotate(-5deg); }
+.bunny.show {
+    bottom: 120px;
 }
 
 /* Confetti */
 .confetti {
     position: fixed;
     top: -10px;
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
     animation: fall linear forwards;
-    z-index: 100;
 }
 
 @keyframes fall {
@@ -132,54 +112,53 @@ h1 {
 
 <body>
 
-<!-- Images -->
+<!-- Background Images -->
 <div class="collage">
-    <img src="1000037570.jpeg" style="top:5%; left:8%;">
+    <img src="1000037570.jpeg" style="top:5%; left:5%;">
     <img src="1000037580.jpeg" style="top:20%; right:10%;">
-    <img src="1000375141.jpeg" style="bottom:15%; left:12%;">
-    <img src="1000375155.jpeg" style="bottom:10%; right:15%;">
-    <img src="1000375158.jpeg" style="top:40%; left:35%;">
+    <img src="1000375141.jpeg" style="bottom:15%; left:10%;">
+    <img src="1000375155.jpeg" style="bottom:10%; right:12%;">
+    <img src="1000375158.jpeg" style="top:40%; left:40%;">
 </div>
 
 <!-- Moving Text -->
 <div class="text">
     <h1>Happiest Birthday Sassa 💝🐇</h1>
-    <div class="message">
-        Lots and lots of love to you 🥰🫶🏻 Stay blessed always 😇✨<br>
-        May all your dreams come true and make everyone proud 💪🏻🥹<br><br>
-        You mean a lot to me 💝🥹<br>
-        You have such a pure, kind and caring heart 💗
-    </div>
+    <p>
+        Lots and lots of love to you 🥰🫶🏻 Stay blessed always 😇✨ <br><br>
+        May all your dreams come true and make everyone proud 💪🏻🥹 <br><br>
+        You mean a lot to me 💝  
+        You have such a pure, kind and caring heart  
+        and I feel truly lucky to have you in my life 🫶🏻💗
+    </p>
 </div>
 
 <!-- Gift Box -->
-<div class="gift-box" id="gift">🎁</div>
+<div class="gift-box" onclick="openGift()">🎁</div>
 
 <!-- Bunny -->
-<img src="bunny.png" class="bunny" id="bunny">
+<img src="bunny.gif" class="bunny" id="bunny">
 
 <script>
-// Confetti forever
-setInterval(() => {
+// Confetti
+function createConfetti() {
     const c = document.createElement("div");
     c.className = "confetti";
     c.style.left = Math.random() * 100 + "vw";
     c.style.backgroundColor =
-        ["#ff4d6d", "#ffb703", "#9b5de5", "#00f5d4"]
-        [Math.floor(Math.random() * 4)];
-    c.style.animationDuration = (Math.random() * 3 + 2) + "s";
+        ["#ff4d6d", "#ffb703", "#9b5de5", "#00f5d4", "#ffafcc"]
+        [Math.floor(Math.random() * 5)];
+    c.style.animationDuration = (Math.random() * 3 + 3) + "s";
     document.body.appendChild(c);
-    setTimeout(() => c.remove(), 5000);
-}, 200);
+    setTimeout(() => c.remove(), 6000);
+}
+setInterval(createConfetti, 180);
 
-// Gift click
-const gift = document.getElementById("gift");
-const bunny = document.getElementById("bunny");
-
-gift.addEventListener("click", () => {
-    gift.textContent = "🎊";
-    bunny.style.display = "block";
-});
+// Gift Box Click
+function openGift() {
+    document.querySelector(".gift-box").innerText = "🎊";
+    document.getElementById("bunny").classList.add("show");
+}
 </script>
 
 </body>
