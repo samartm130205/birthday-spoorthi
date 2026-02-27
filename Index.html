@@ -27,16 +27,13 @@ body {
     height: 180px;
     object-fit: cover;
     border-radius: 15px;
-    opacity: 0.35;
     box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    opacity: 0.35;
 }
 
 /* Center card */
 .card {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: relative;
     background: white;
     padding: 30px;
     border-radius: 25px;
@@ -44,23 +41,23 @@ body {
     box-shadow: 0 12px 30px rgba(0,0,0,0.25);
     width: 85%;
     max-width: 420px;
-    z-index: 10;
+    margin: auto;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 h1 {
     color: #ff4d6d;
-    font-size: 28px;
 }
 
-p {
-    color: #444;
+.message {
     font-size: 15px;
     line-height: 1.6;
     margin-top: 15px;
 }
 
 .heart {
-    font-size: 42px;
+    font-size: 40px;
     animation: beat 1s infinite;
     margin-top: 10px;
 }
@@ -70,11 +67,12 @@ p {
     50% { transform: scale(1.25); }
 }
 
-/* Confetti & emoji fall */
+/* Confetti */
 .confetti {
     position: fixed;
     top: -10px;
-    font-size: 22px;
+    width: 10px;
+    height: 10px;
     animation: fall linear forwards;
     z-index: 100;
 }
@@ -90,51 +88,44 @@ p {
 
 <body>
 
-<!-- Background Image Collage -->
 <div class="collage">
-    <img src="1000037570.jpeg" style="top:5%; left:8%;">
-    <img src="1000037580.jpeg" style="top:15%; right:10%;">
-    <img src="1000375141.jpeg" style="bottom:15%; left:12%;">
-    <img src="1000375155.jpeg" style="bottom:10%; right:15%;">
-    <img src="1000385134.jpeg" style="top:40%; left:35%;">
+    <img src="img1.jpg" style="top:5%; left:8%;">
+    <img src="img2.jpg" style="top:20%; right:10%;">
+    <img src="img3.jpg" style="bottom:15%; left:12%;">
+    <img src="img4.jpg" style="bottom:10%; right:15%;">
+    <img src="img5.jpg" style="top:40%; left:35%;">
 </div>
 
-<!-- Main Card -->
 <div class="card">
     <h1>Happiest Birthday Sassa 💝🐇</h1>
+
+    <div class="message">
+        Lots and lots of love to you 🥰🫶🏻 Stay blessed always 😇✨  
+        May all your dreams come true and make everyone proud 💪🏻🥹  
+        <br><br>
+        You mean a lot to me 💝🥹  
+        You have such a pure, kind and caring heart and I feel truly lucky  
+        and grateful to have you in my life 🫶🏻💗
+    </div>
+
     <div class="heart">❤️</div>
-
-    <p>
-        Lots and lots of love to you 🥰🫶🏻<br>
-        Stay blessed always 😇✨<br>
-        May all your dreams come true and make everyone proud 💪🏻🥹
-    </p>
-
-    <p>
-        You mean a lot to me 💝🥹<br>
-        You have such a pure, kind and caring heart,<br>
-        and I feel truly lucky and grateful to have you in my life 🫶🏻💗
-    </p>
 </div>
 
-<!-- Confetti & Emoji Script -->
 <script>
-function createCelebration() {
-    const emojis = ["🎉", "✨", "💖", "🎊", "💝"];
-
+function createConfetti() {
     for (let i = 0; i < 120; i++) {
         const confetti = document.createElement("div");
         confetti.className = "confetti";
-        confetti.innerText = emojis[Math.floor(Math.random() * emojis.length)];
         confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.backgroundColor =
+            ["#ff4d6d", "#ffb703", "#9b5de5", "#00f5d4", "#ffafcc"]
+            [Math.floor(Math.random() * 5)];
         confetti.style.animationDuration = (Math.random() * 3 + 2) + "s";
         document.body.appendChild(confetti);
-
         setTimeout(() => confetti.remove(), 5000);
     }
 }
-
-window.onload = createCelebration;
+window.onload = createConfetti;
 </script>
 
 </body>
