@@ -59,7 +59,7 @@ h1 {
 .heart {
     font-size: 40px;
     animation: beat 1s infinite;
-    margin-top: 10px;
+    margin-top: 12px;
 }
 
 @keyframes beat {
@@ -67,19 +67,18 @@ h1 {
     50% { transform: scale(1.25); }
 }
 
-/* Confetti */
-.confetti {
+/* Sparkles */
+.sparkle {
     position: fixed;
     top: -10px;
-    width: 10px;
-    height: 10px;
+    font-size: 20px;
     animation: fall linear forwards;
     z-index: 100;
 }
 
 @keyframes fall {
     to {
-        transform: translateY(110vh) rotate(360deg);
+        transform: translateY(110vh);
         opacity: 0;
     }
 }
@@ -88,12 +87,13 @@ h1 {
 
 <body>
 
+<!-- 🔴 IMPORTANT: replace image names with your real ones -->
 <div class="collage">
-    <img src="img1.jpg" style="top:5%; left:8%;">
-    <img src="img2.jpg" style="top:20%; right:10%;">
-    <img src="img3.jpg" style="bottom:15%; left:12%;">
-    <img src="img4.jpg" style="bottom:10%; right:15%;">
-    <img src="img5.jpg" style="top:40%; left:35%;">
+    <img src="images/1000037570.jpeg" style="top:5%; left:8%;">
+    <img src="images/1000037580.jpeg" style="top:20%; right:10%;">
+    <img src="images/1000375141.jpeg" style="bottom:15%; left:12%;">
+    <img src="images/1000375155.jpeg" style="bottom:10%; right:15%;">
+    <img src="images/1000375158.jpeg" style="top:40%; left:35%;">
 </div>
 
 <div class="card">
@@ -112,20 +112,21 @@ h1 {
 </div>
 
 <script>
-function createConfetti() {
-    for (let i = 0; i < 120; i++) {
-        const confetti = document.createElement("div");
-        confetti.className = "confetti";
-        confetti.style.left = Math.random() * 100 + "vw";
-        confetti.style.backgroundColor =
-            ["#ff4d6d", "#ffb703", "#9b5de5", "#00f5d4", "#ffafcc"]
-            [Math.floor(Math.random() * 5)];
-        confetti.style.animationDuration = (Math.random() * 3 + 2) + "s";
-        document.body.appendChild(confetti);
-        setTimeout(() => confetti.remove(), 5000);
-    }
+function createSparkle() {
+    const sparkle = document.createElement("div");
+    sparkle.className = "sparkle";
+    sparkle.innerText = "✨";
+    sparkle.style.left = Math.random() * 100 + "vw";
+    sparkle.style.fontSize = Math.random() * 15 + 15 + "px";
+    sparkle.style.animationDuration = Math.random() * 3 + 3 + "s";
+
+    document.body.appendChild(sparkle);
+
+    setTimeout(() => sparkle.remove(), 6000);
 }
-window.onload = createConfetti;
+
+/* keep sparkles falling until page is closed */
+setInterval(createSparkle, 200);
 </script>
 
 </body>
