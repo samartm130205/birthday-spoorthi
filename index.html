@@ -24,6 +24,7 @@ body {
     opacity: 0.5;
     animation: float 7s ease-in-out infinite;
     transition: transform 0.4s ease, opacity 0.4s ease;
+    cursor: pointer;
 }
 
 .collage img:active {
@@ -47,15 +48,15 @@ body {
     width: 90%;
     left: 5%;
     font-size: 18px;
-    animation: moveText 12s linear infinite;
+    animation: moveText 14s linear infinite;
 }
 
 @keyframes moveText {
-    0%   { top: 10%; left: 5%; }
-    25%  { top: 30%; left: 50%; }
+    0%   { top: 8%; left: 5%; }
+    25%  { top: 30%; left: 40%; }
     50%  { top: 55%; left: 10%; }
-    75%  { top: 35%; left: 40%; }
-    100% { top: 10%; left: 5%; }
+    75%  { top: 35%; left: 45%; }
+    100% { top: 8%; left: 5%; }
 }
 
 h1 {
@@ -71,6 +72,7 @@ h1 {
     font-size: 60px;
     cursor: pointer;
     animation: bounce 1.5s infinite;
+    z-index: 20;
 }
 
 @keyframes bounce {
@@ -78,14 +80,15 @@ h1 {
     50% { transform: translate(-50%, -12px); }
 }
 
-/* Bunny */
+/* Bunny GIF */
 .bunny {
     position: fixed;
-    bottom: -200px;
+    bottom: -250px;
     left: 50%;
     transform: translateX(-50%);
-    width: 200px;
+    width: 220px;
     transition: bottom 1s ease;
+    z-index: 25;
 }
 
 .bunny.show {
@@ -99,6 +102,7 @@ h1 {
     width: 10px;
     height: 10px;
     animation: fall linear forwards;
+    z-index: 30;
 }
 
 @keyframes fall {
@@ -136,8 +140,8 @@ h1 {
 <!-- Gift Box -->
 <div class="gift-box" onclick="openGift()">🎁</div>
 
-<!-- Bunny -->
-<img src="bunny.gif" class="bunny" id="bunny">
+<!-- Bunny GIF (UPDATED NAME) -->
+<img src="IMG_5845.gif" class="bunny" id="bunny">
 
 <script>
 // Confetti
