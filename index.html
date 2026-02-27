@@ -41,14 +41,15 @@ body {
     100% { transform: translateY(0px); }
 }
 
-/* Zoomed image */
+/* Fullscreen zoomed image */
 .zoomed {
     position: fixed !important;
-    top: 50% !important;
-    left: 50% !important;
-    transform: translate(-50%, -50%) scale(2) !important;
-    width: 280px !important;
-    height: 360px !important;
+    inset: 0 !important;
+    width: auto !important;
+    height: auto !important;
+    max-width: 90vw !important;
+    max-height: 90vh !important;
+    margin: auto !important;
     opacity: 1 !important;
     z-index: 999;
     animation: none;
@@ -58,35 +59,39 @@ body {
 .overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.6);
     z-index: 998;
 }
 
-/* Center card */
-.card {
-    position: relative;
-    background: white;
-    padding: 30px;
-    border-radius: 25px;
-    text-align: center;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.25);
-    width: 85%;
-    max-width: 420px;
-    margin: auto;
+/* Floating text (NO white box) */
+.text {
+    position: absolute;
     top: 50%;
-    transform: translateY(-50%);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    padding: 20px;
+    animation: textFloat 6s ease-in-out infinite;
 }
 
-h1 {
-    color: #ff4d6d;
+@keyframes textFloat {
+    0% { transform: translate(-50%, -50%) translateY(0); }
+    50% { transform: translate(-50%, -50%) translateY(-15px); }
+    100% { transform: translate(-50%, -50%) translateY(0); }
 }
 
-.message {
+.text h1 {
+    font-size: 26px;
+    margin-bottom: 10px;
+}
+
+.text p {
     font-size: 15px;
-    line-height: 1.6;
-    margin-top: 15px;
+    line-height: 1.7;
 }
 
+/* Heart beat */
 .heart {
     font-size: 40px;
     animation: beat 1s infinite;
@@ -127,18 +132,19 @@ h1 {
     <img src="1000375158.jpeg" style="top:40%; left:35%;">
 </div>
 
-<div class="card">
+<!-- Floating Text -->
+<div class="text">
     <h1>Happiest Birthday Sassa 💝🐇</h1>
+    <p>
+        Lots and lots of love to you 🥰🫶🏻<br>
+        Stay blessed always 😇✨<br><br>
 
-    <div class="message">
-        Lots and lots of love to you 🥰🫶🏻 Stay blessed always 😇✨  
-        May all your dreams come true and make everyone proud 💪🏻🥹  
-        <br><br>
-        You mean a lot to me 💝🥹  
-        You have such a pure, kind and caring heart and I feel truly lucky  
-        and grateful to have you in my life 🫶🏻💗
-    </div>
+        May all your dreams come true and make everyone proud 💪🏻🥹<br><br>
 
+        You mean a lot to me 💝🥹<br>
+        You have such a pure, kind and caring heart<br>
+        and I feel truly lucky and grateful to have you in my life 🫶🏻💗
+    </p>
     <div class="heart">❤️</div>
 </div>
 
