@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday Sassa 💝</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(to right, #ffdde1, #ee9ca7);
+}
+
+/* Background collage */
+.collage {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+}
+
+.collage img {
+    position: absolute;
+    width: 140px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 15px;
+    opacity: 0.35;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+/* Center card */
+.card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 30px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+    width: 85%;
+    max-width: 420px;
+    z-index: 10;
+}
+
+h1 {
+    color: #ff4d6d;
+    font-size: 28px;
+}
+
+p {
+    color: #444;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-top: 15px;
+}
+
+.heart {
+    font-size: 42px;
+    animation: beat 1s infinite;
+    margin-top: 10px;
+}
+
+@keyframes beat {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.25); }
+}
+
+/* Confetti & emoji fall */
+.confetti {
+    position: fixed;
+    top: -10px;
+    font-size: 22px;
+    animation: fall linear forwards;
+    z-index: 100;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Background Image Collage -->
+<div class="collage">
+    <img src="1000037570.jpeg" style="top:5%; left:8%;">
+    <img src="1000037580.jpeg" style="top:15%; right:10%;">
+    <img src="1000375141.jpeg" style="bottom:15%; left:12%;">
+    <img src="1000375155.jpeg" style="bottom:10%; right:15%;">
+    <img src="1000385134.jpeg" style="top:40%; left:35%;">
+</div>
+
+<!-- Main Card -->
+<div class="card">
+    <h1>Happiest Birthday Sassa 💝🐇</h1>
+    <div class="heart">❤️</div>
+
+    <p>
+        Lots and lots of love to you 🥰🫶🏻<br>
+        Stay blessed always 😇✨<br>
+        May all your dreams come true and make everyone proud 💪🏻🥹
+    </p>
+
+    <p>
+        You mean a lot to me 💝🥹<br>
+        You have such a pure, kind and caring heart,<br>
+        and I feel truly lucky and grateful to have you in my life 🫶🏻💗
+    </p>
+</div>
+
+<!-- Confetti & Emoji Script -->
+<script>
+function createCelebration() {
+    const emojis = ["🎉", "✨", "💖", "🎊", "💝"];
+
+    for (let i = 0; i < 120; i++) {
+        const confetti = document.createElement("div");
+        confetti.className = "confetti";
+        confetti.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.animationDuration = (Math.random() * 3 + 2) + "s";
+        document.body.appendChild(confetti);
+
+        setTimeout(() => confetti.remove(), 5000);
+    }
+}
+
+window.onload = createCelebration;
+</script>
+
+</body>
+</html>
