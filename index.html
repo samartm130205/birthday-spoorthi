@@ -14,53 +14,42 @@ body {
     background: linear-gradient(to right, #ffdde1, #ee9ca7);
 }
 
-/* Background Images (STATIC – NO FLOAT) */
+/* Background Images – STATIC */
 .collage img {
     position: absolute;
-    width: 170px;
-    height: 200px;
+    width: 150px;
+    height: 170px;
     object-fit: cover;
     border-radius: 16px;
     opacity: 0.5;
-    transition: transform 0.4s ease, opacity 0.4s ease;
-    cursor: pointer;
 }
 
-.collage img:active {
-    transform: scale(1.8);
-    opacity: 1;
-    z-index: 10;
-}
-
-/* Text container (STATIC POSITION) */
+/* TEXT CONTAINER */
 .text {
     position: absolute;
     top: 18%;
-    left: 5%;
+    left: 50%;
+    transform: translateX(-50%);
     width: 90%;
     text-align: center;
     color: black;
-    font-size: 18px;
-    z-index: 15;
-}
+    z-index: 10;
 
-/* ONLY TEXT FLOATS */
-.text h1,
-.text p {
-    animation: floatText 4s ease-in-out infinite;
+    /* 👇 ONLY TEXT FLOATS */
+    animation: floatText 3.5s ease-in-out infinite;
 }
 
 @keyframes floatText {
-    0%   { transform: translateY(0); }
-    50%  { transform: translateY(-12px); }
-    100% { transform: translateY(0); }
+    0%   { transform: translate(-50%, 0); }
+    50%  { transform: translate(-50%, -20px); } /* CLEAR FLOAT */
+    100% { transform: translate(-50%, 0); }
 }
 
 h1 {
     font-size: 26px;
 }
 
-/* 🎁 BIG Gift Box */
+/* 🎁 Gift */
 .gift-box {
     position: fixed;
     bottom: 25px;
@@ -70,7 +59,6 @@ h1 {
     cursor: pointer;
     animation: bounce 1.5s infinite;
     z-index: 20;
-    filter: drop-shadow(0 12px 25px rgba(0,0,0,0.35));
 }
 
 @keyframes bounce {
@@ -78,7 +66,7 @@ h1 {
     50% { transform: translate(-50%, -15px); }
 }
 
-/* Bunny GIF */
+/* Bunny */
 .bunny {
     position: fixed;
     bottom: -250px;
@@ -114,7 +102,7 @@ h1 {
 
 <body>
 
-<!-- Background Images -->
+<!-- Images -->
 <div class="collage">
     <img src="1000037570.jpeg" style="top:5%; left:5%;">
     <img src="1000037580.jpeg" style="top:20%; right:10%;">
@@ -123,19 +111,19 @@ h1 {
     <img src="1000375158.jpeg" style="top:40%; left:40%;">
 </div>
 
-<!-- Floating Text -->
+<!-- FLOATING TEXT -->
 <div class="text">
     <h1>Happiest Birthday Spoorthiii 💝🥹✨</h1>
     <p>
-        Lots and lots of love to you 🥰🫶🏻 <br>
+        Lots and lots of love to you 🥰🫶🏻<br>
         Stay blessed always 😇✨
     </p>
 </div>
 
-<!-- Gift Box -->
+<!-- Gift -->
 <div class="gift-box" onclick="openGift()">🎁</div>
 
-<!-- Bunny GIF -->
+<!-- Bunny -->
 <img src="IMG_5845.gif" class="bunny" id="bunny">
 
 <script>
