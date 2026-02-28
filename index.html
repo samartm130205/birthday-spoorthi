@@ -4,12 +4,15 @@
 <meta charset="UTF-8">
 <title>Happy Birthday Spoorthiii 💝</title>
 
+<!-- 🌸 FANCY FONTS -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
 <style>
 body {
     margin: 0;
     height: 100vh;
     overflow: hidden;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Poppins', sans-serif;
     background: linear-gradient(to right, #ffdde1, #ee9ca7);
 }
 
@@ -110,13 +113,20 @@ body {
 }
 
 .center-text h1 {
-    font-size: 30px;
-    font-weight: 800;
+    font-family: 'Great Vibes', cursive;
+    font-size: 48px;
+    font-weight: 400;
+    color: #111;
+    text-shadow:
+        0 4px 10px rgba(0,0,0,0.25),
+        0 0 20px rgba(255,105,180,0.6);
 }
 
 .center-text p {
+    font-family: 'Poppins', sans-serif;
     font-size: 18px;
     font-weight: 600;
+    margin-top: 10px;
 }
 
 /* 🎁 GIFT */
@@ -156,7 +166,7 @@ body {
 
 <body>
 
-<!-- 🔝 TOP 4 -->
+<!-- 🔝 TOP -->
 <div class="frame top">
     <img src="1000037570.jpeg">
     <img src="1000037580.jpeg">
@@ -164,7 +174,7 @@ body {
     <img src="1000375155.jpeg">
 </div>
 
-<!-- ⬅ LEFT 4 -->
+<!-- ⬅ LEFT -->
 <div class="frame left">
     <img src="1000386482.jpeg">
     <img src="1000386486.jpeg">
@@ -172,7 +182,7 @@ body {
     <img src="IMG_5869.jpeg">
 </div>
 
-<!-- ➡ RIGHT 4 -->
+<!-- ➡ RIGHT -->
 <div class="frame right">
     <img src="1000375158.jpeg">
     <img src="1000385152.jpeg">
@@ -180,7 +190,7 @@ body {
     <img src="IMG_5871.jpeg">
 </div>
 
-<!-- 🔽 BOTTOM 4 -->
+<!-- 🔽 BOTTOM -->
 <div class="frame bottom">
     <img src="IMG_5872.jpeg">
     <img src="IMG_5873.jpeg">
@@ -188,7 +198,7 @@ body {
     <img src="IMG_5882.jpeg">
 </div>
 
-<!-- 💝 CENTER TEXT -->
+<!-- 💝 CENTER -->
 <div class="center-text">
     <h1>Happiest Birthday Spoorthiii 💝🥹✨</h1>
     <p>
@@ -204,7 +214,7 @@ body {
 <img src="IMG_5845.gif" class="bunny" id="bunny">
 
 <script>
-/* 🌧️ CONTINUOUS FALLING SPARKLES */
+/* 🌧️ FALLING SPARKLES */
 function createSparkle() {
     const s = document.createElement("div");
     s.className = "sparkle";
@@ -213,12 +223,11 @@ function createSparkle() {
     document.body.appendChild(s);
     setTimeout(() => s.remove(), 8000);
 }
-
 setInterval(() => {
     for (let i = 0; i < 6; i++) createSparkle();
 }, 200);
 
-/* 🚀 CORNER → CENTER SPARKLES */
+/* 🚀 CORNER SPARKLES */
 function shootFromCorner(x, y) {
     const cx = window.innerWidth / 2;
     const cy = window.innerHeight / 2;
@@ -235,10 +244,7 @@ function shootFromCorner(x, y) {
         s.animate([
             { transform: "translate(0,0)", opacity: 1 },
             { transform: `translate(${Math.cos(angle)*distance}px, ${Math.sin(angle)*distance}px)`, opacity: 0 }
-        ], {
-            duration: 1400,
-            easing: "ease-out"
-        });
+        ], { duration: 1400, easing: "ease-out" });
 
         document.body.appendChild(s);
         setTimeout(() => s.remove(), 2000);
@@ -252,7 +258,7 @@ setInterval(() => {
     shootFromCorner(window.innerWidth, window.innerHeight);
 }, 1800);
 
-/* 🎁 GIFT ACTION */
+/* 🎁 GIFT */
 function openGift() {
     document.querySelector(".gift-box").innerText = "🎊";
     document.getElementById("bunny").classList.add("show");
