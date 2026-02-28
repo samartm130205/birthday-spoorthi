@@ -8,12 +8,84 @@
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
+* { box-sizing: border-box; }
+
 body {
     margin: 0;
     height: 100vh;
     overflow: hidden;
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(to right, #ffdde1, #ee9ca7);
+}
+
+/* ================= COVER PAGE ================= */
+.cover {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(to bottom right, #ff9a9e, #fad0c4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 1s ease, visibility 1s ease;
+}
+
+.cover.hide {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.cover-card {
+    text-align: center;
+    padding: 40px;
+    border-radius: 30px;
+    background: rgba(255,255,255,0.25);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    animation: floatCard 3s ease-in-out infinite;
+}
+
+@keyframes floatCard {
+    50% { transform: translateY(-15px); }
+}
+
+.cover-card h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 60px;
+    margin: 0;
+    color: #222;
+}
+
+.cover-card p {
+    font-size: 18px;
+    margin: 15px 0 25px;
+    font-weight: 600;
+}
+
+.cover-card button {
+    font-size: 18px;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    background: linear-gradient(to right, #ff6a88, #ff99ac);
+    color: #fff;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    transition: transform 0.2s ease;
+}
+
+.cover-card button:hover {
+    transform: scale(1.05);
+}
+
+/* ================= MAIN PAGE ================= */
+.main {
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.main.show {
+    opacity: 1;
 }
 
 /* 🌧️ FALLING SPARKLES */
@@ -54,47 +126,27 @@ body {
     box-shadow: 0 10px 22px rgba(0,0,0,0.18);
 }
 
-/* 🔝 TOP */
-.frame.top {
+/* FRAMES */
+.frame.top, .frame.bottom {
     position: absolute;
-    top: 25px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     gap: 90px;
 }
+.frame.top { top: 25px; }
+.frame.bottom { bottom: 40px; }
 
-/* 🔽 BOTTOM */
-.frame.bottom {
+.frame.left, .frame.right {
     position: absolute;
-    bottom: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 90px;
-}
-
-/* ⬅ LEFT */
-.frame.left {
-    position: absolute;
-    left: 22px;
     top: 50%;
     transform: translateY(-50%);
     display: flex;
     flex-direction: column;
     gap: 90px;
 }
-
-/* ➡ RIGHT */
-.frame.right {
-    position: absolute;
-    right: 22px;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    flex-direction: column;
-    gap: 90px;
-}
+.frame.left { left: 22px; }
+.frame.right { right: 22px; }
 
 /* 💝 CENTER TEXT */
 .center-text {
@@ -108,28 +160,21 @@ body {
 }
 
 @keyframes floatText {
-    0%,100% { transform: translate(-50%, -50%) translateY(0); }
     50% { transform: translate(-50%, -50%) translateY(-20px); }
 }
 
 .center-text h1 {
     font-family: 'Great Vibes', cursive;
     font-size: 48px;
-    font-weight: 400;
     color: #111;
-    text-shadow:
-        0 4px 10px rgba(0,0,0,0.25),
-        0 0 20px rgba(255,105,180,0.6);
 }
 
 .center-text p {
-    font-family: 'Poppins', sans-serif;
     font-size: 18px;
     font-weight: 600;
-    margin-top: 10px;
 }
 
-/* 🎁 GIFT */
+/* 🎁 */
 .gift-box {
     position: absolute;
     top: 55%;
@@ -145,7 +190,7 @@ body {
     50% { transform: translate(-50%, -15px); }
 }
 
-/* 🐰 BUNNY */
+/* 🐰 */
 .bunny {
     position: absolute;
     top: 68%;
@@ -166,7 +211,18 @@ body {
 
 <body>
 
-<!-- 🔝 TOP -->
+<!-- 🌸 COVER PAGE -->
+<div class="cover" id="cover" onclick="openCard()">
+    <div class="cover-card">
+        <h1>Happy Birthday 💝</h1>
+        <p>A special card just for you ✨</p>
+        <button>Open Card 🎀</button>
+    </div>
+</div>
+
+<!-- 🌸 MAIN PAGE -->
+<div class="main" id="main">
+
 <div class="frame top">
     <img src="1000037570.jpeg">
     <img src="1000037580.jpeg">
@@ -174,7 +230,6 @@ body {
     <img src="1000375155.jpeg">
 </div>
 
-<!-- ⬅ LEFT -->
 <div class="frame left">
     <img src="1000386482.jpeg">
     <img src="1000386486.jpeg">
@@ -182,7 +237,6 @@ body {
     <img src="IMG_5869.jpeg">
 </div>
 
-<!-- ➡ RIGHT -->
 <div class="frame right">
     <img src="1000375158.jpeg">
     <img src="1000385152.jpeg">
@@ -190,7 +244,6 @@ body {
     <img src="IMG_5871.jpeg">
 </div>
 
-<!-- 🔽 BOTTOM -->
 <div class="frame bottom">
     <img src="IMG_5872.jpeg">
     <img src="IMG_5873.jpeg">
@@ -198,31 +251,26 @@ body {
     <img src="IMG_5882.jpeg">
 </div>
 
-<!-- 💝 CENTER -->
 <div class="center-text">
     <h1>Happiest Birthday Spoorthiii 💝🥹✨</h1>
     <p>
         Lots and lots of love 🥰🫶🏻<br>
         Stay blessed always 😇✨
     </p>
-    <p> May your day be filled with smiles that don’t fade,
-memories that stay forever,and happiness that grows stronger with every year.
-
-You deserve all the love, laughter today and always.
-Keep shining, keep dreaming, and never stop being the amazing person you are. ✨
-
-💖 With lots of love and warm wishes 💖
-</p>
 </div>
 
-<!-- 🎁 -->
 <div class="gift-box" onclick="openGift()">🎁</div>
-
-<!-- 🐰 -->
 <img src="IMG_5845.gif" class="bunny" id="bunny">
 
+</div>
+
 <script>
-/* 🌧️ FALLING SPARKLES */
+function openCard() {
+    document.getElementById("cover").classList.add("hide");
+    document.getElementById("main").classList.add("show");
+}
+
+/* Sparkles */
 function createSparkle() {
     const s = document.createElement("div");
     s.className = "sparkle";
@@ -231,42 +279,9 @@ function createSparkle() {
     document.body.appendChild(s);
     setTimeout(() => s.remove(), 8000);
 }
-setInterval(() => {
-    for (let i = 0; i < 6; i++) createSparkle();
-}, 200);
+setInterval(() => { for (let i = 0; i < 6; i++) createSparkle(); }, 200);
 
-/* 🚀 CORNER SPARKLES */
-function shootFromCorner(x, y) {
-    const cx = window.innerWidth / 2;
-    const cy = window.innerHeight / 2;
-
-    for (let i = 0; i < 12; i++) {
-        const s = document.createElement("div");
-        s.className = "corner-sparkle";
-        s.style.left = x + "px";
-        s.style.top = y + "px";
-
-        const angle = Math.atan2(cy - y, cx - x);
-        const distance = 500 + Math.random() * 300;
-
-        s.animate([
-            { transform: "translate(0,0)", opacity: 1 },
-            { transform: `translate(${Math.cos(angle)*distance}px, ${Math.sin(angle)*distance}px)`, opacity: 0 }
-        ], { duration: 1400, easing: "ease-out" });
-
-        document.body.appendChild(s);
-        setTimeout(() => s.remove(), 2000);
-    }
-}
-
-setInterval(() => {
-    shootFromCorner(0, 0);
-    shootFromCorner(window.innerWidth, 0);
-    shootFromCorner(0, window.innerHeight);
-    shootFromCorner(window.innerWidth, window.innerHeight);
-}, 1800);
-
-/* 🎁 GIFT */
+/* Gift */
 function openGift() {
     document.querySelector(".gift-box").innerText = "🎊";
     document.getElementById("bunny").classList.add("show");
