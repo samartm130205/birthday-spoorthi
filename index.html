@@ -14,7 +14,7 @@ body {
     background: linear-gradient(to right, #ffdde1, #ee9ca7);
 }
 
-/* Floating Images */
+/* Background Images (STATIC – NO FLOAT) */
 .collage img {
     position: absolute;
     width: 150px;
@@ -22,7 +22,6 @@ body {
     object-fit: cover;
     border-radius: 16px;
     opacity: 0.5;
-    animation: float 7s ease-in-out infinite;
     transition: transform 0.4s ease, opacity 0.4s ease;
     cursor: pointer;
 }
@@ -33,30 +32,28 @@ body {
     z-index: 10;
 }
 
-/* Floating animation */
-@keyframes float {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-25px); }
-    100% { transform: translateY(0); }
-}
-
-/* Moving Text */
+/* Text container (STATIC POSITION) */
 .text {
     position: absolute;
-    color: black;
-    text-align: center;
-    width: 90%;
+    top: 18%;
     left: 5%;
+    width: 90%;
+    text-align: center;
+    color: black;
     font-size: 18px;
-    animation: moveText 14s linear infinite;
+    z-index: 15;
 }
 
-@keyframes moveText {
-    0%   { top: 8%; left: 5%; }
-    25%  { top: 30%; left: 40%; }
-    50%  { top: 55%; left: 10%; }
-    75%  { top: 35%; left: 45%; }
-    100% { top: 8%; left: 5%; }
+/* ONLY TEXT FLOATS */
+.text h1,
+.text p {
+    animation: floatText 4s ease-in-out infinite;
+}
+
+@keyframes floatText {
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-12px); }
+    100% { transform: translateY(0); }
 }
 
 h1 {
@@ -69,19 +66,13 @@ h1 {
     bottom: 25px;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 130px;              /* BIG SIZE */
+    font-size: 130px;
     cursor: pointer;
     animation: bounce 1.5s infinite;
     z-index: 20;
     filter: drop-shadow(0 12px 25px rgba(0,0,0,0.35));
-    transition: transform 0.3s ease;
 }
 
-.gift-box:active {
-    transform: translateX(-50%) scale(1.15);
-}
-
-/* Bounce animation */
 @keyframes bounce {
     0%,100% { transform: translate(-50%, 0); }
     50% { transform: translate(-50%, -15px); }
@@ -132,11 +123,11 @@ h1 {
     <img src="1000375158.jpeg" style="top:40%; left:40%;">
 </div>
 
-<!-- Moving Text -->
+<!-- Floating Text -->
 <div class="text">
     <h1>Happiest Birthday Spoorthiii 💝🥹✨</h1>
     <p>
-        Lots and lots of love to you 🥰🫶🏻  
+        Lots and lots of love to you 🥰🫶🏻 <br>
         Stay blessed always 😇✨
     </p>
 </div>
@@ -162,7 +153,7 @@ function createConfetti() {
 }
 setInterval(createConfetti, 180);
 
-// Gift Box Click
+// Gift click
 function openGift() {
     document.querySelector(".gift-box").innerText = "🎊";
     document.getElementById("bunny").classList.add("show");
