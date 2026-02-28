@@ -13,85 +13,72 @@ body {
     background: linear-gradient(to right, #ffdde1, #ee9ca7);
 }
 
-/* 🌟 SPARKLES */
-.sparkle {
-    position: fixed;
-    width: 6px;
-    height: 6px;
-    background: radial-gradient(circle, #fff, #ff69b4);
-    border-radius: 50%;
-    pointer-events: none;
-    animation: fall linear forwards;
-}
-
-@keyframes fall {
-    from { transform: translateY(-10px); opacity: 1; }
-    to { transform: translateY(110vh); opacity: 0; }
-}
-
 /* 🖼️ IMAGE STYLE */
 .frame img {
-    width: 105px;
-    height: 135px;
+    width: 110px;
+    height: 140px;
     object-fit: cover;
     border-radius: 18px;
-    opacity: 0.65;
-    box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+    opacity: 0.7;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
-/* FRAMES */
+/* 🔝 TOP */
 .frame.top {
     position: absolute;
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 28px;
+    gap: 30px;
 }
 
+/* 🔽 BOTTOM */
 .frame.bottom {
     position: absolute;
-    bottom: 120px;
+    bottom: 130px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 28px;
+    gap: 30px;
 }
 
+/* ⬅️ LEFT */
 .frame.left {
     position: absolute;
-    left: 18px;
+    left: 20px;
     top: 50%;
     transform: translateY(-50%);
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 32px;
 }
 
+/* ➡️ RIGHT */
 .frame.right {
     position: absolute;
-    right: 18px;
+    right: 20px;
     top: 50%;
     transform: translateY(-50%);
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 32px;
 }
 
-/* 💝 CENTER TEXT */
+/* 💝 CENTER FLOATING TEXT */
 .center-text {
     position: absolute;
-    top: 50%;
+    top: 48%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    z-index: 10;
+    z-index: 20;
     animation: floatText 4s ease-in-out infinite;
 }
 
 @keyframes floatText {
     0% { transform: translate(-50%, -50%) translateY(0); }
-    50% { transform: translate(-50%, -50%) translateY(-22px); }
+    50% { transform: translate(-50%, -50%) translateY(-24px); }
     100% { transform: translate(-50%, -50%) translateY(0); }
 }
 
@@ -99,7 +86,9 @@ body {
     font-size: 32px;
     font-weight: 800;
     color: #111;
-    text-shadow: 0 3px 10px rgba(0,0,0,0.3);
+    text-shadow:
+        0 4px 10px rgba(0,0,0,0.25),
+        0 0 18px rgba(255,105,180,0.7);
 }
 
 .center-text p {
@@ -116,7 +105,7 @@ body {
     font-size: 120px;
     cursor: pointer;
     animation: bounce 1.5s infinite;
-    z-index: 20;
+    z-index: 30;
 }
 
 @keyframes bounce {
@@ -132,7 +121,7 @@ body {
     transform: translateX(-50%);
     width: 220px;
     transition: bottom 1s ease;
-    z-index: 25;
+    z-index: 35;
 }
 
 .bunny.show {
@@ -143,34 +132,37 @@ body {
 
 <body>
 
-<!-- 🔝 TOP -->
+<!-- 🔝 TOP (4) -->
 <div class="frame top">
-    <img src="IMG_5869.jpeg">
-    <img src="IMG_5870.jpeg">
-    <img src="IMG_5871.jpeg">
+    <img src="1000037570.jpeg">
+    <img src="1000037580.jpeg">
+    <img src="1000375141.jpeg">
+    <img src="1000375155.jpeg">
 </div>
 
-<!-- ⬅️ LEFT -->
+<!-- ⬅️ LEFT (4) -->
 <div class="frame left">
-    <img src="IMG_5872.jpeg">
-    <img src="IMG_5873.jpeg">
-    <img src="IMG_5869.jpeg">
+    <img src="1000375158.jpeg">
+    <img src="1000385134.jpeg">
+    <img src="1000385152.jpeg">
+    <img src="1000386482.jpeg">
 </div>
 
-<!-- ➡️ RIGHT -->
+<!-- ➡️ RIGHT (4) -->
 <div class="frame right">
+    <img src="1000386486.jpeg">
+    <img src="IMG_5869.jpeg">
     <img src="IMG_5870.jpeg">
     <img src="IMG_5871.jpeg">
-    <img src="IMG_5872.jpeg">
 </div>
 
-<!-- 🔽 BOTTOM -->
+<!-- 🔽 BOTTOM (2) -->
 <div class="frame bottom">
+    <img src="IMG_5872.jpeg">
     <img src="IMG_5873.jpeg">
-    <img src="IMG_5869.jpeg">
 </div>
 
-<!-- 💝 CENTER -->
+<!-- 💝 CENTER TEXT -->
 <div class="center-text">
     <h1>Happiest Birthday Spoorthiii 💝🥹✨</h1>
     <p>
@@ -186,34 +178,6 @@ body {
 <img src="IMG_5845.gif" class="bunny" id="bunny">
 
 <script>
-/* 🎊 CONTINUOUS SPARKLES */
-setInterval(() => {
-    for (let i = 0; i < 4; i++) {
-        createSparkle(Math.random() * window.innerWidth, -10);
-    }
-}, 120);
-
-function createSparkle(x, y) {
-    const s = document.createElement("div");
-    s.className = "sparkle";
-    s.style.left = x + "px";
-    s.style.top = y + "px";
-    s.style.animationDuration = (3 + Math.random() * 3) + "s";
-    document.body.appendChild(s);
-    setTimeout(() => s.remove(), 6000);
-}
-
-/* 💥 TAP BLAST */
-document.addEventListener("click", e => {
-    for (let i = 0; i < 40; i++) {
-        createSparkle(
-            e.clientX + (Math.random() * 100 - 50),
-            e.clientY + (Math.random() * 100 - 50)
-        );
-    }
-});
-
-/* 🎁 GIFT ACTION */
 function openGift() {
     document.querySelector(".gift-box").innerText = "🎊";
     document.getElementById("bunny").classList.add("show");
