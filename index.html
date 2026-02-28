@@ -14,7 +14,7 @@ body {
     overflow-x: hidden;
 }
 
-/* IMAGE GRID – NO OVERLAP */
+/* IMAGE GRID */
 .collage {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -50,7 +50,9 @@ body {
 .text h1 {
     font-size: 28px;
     font-weight: 800;
-    text-shadow: 0 2px 6px rgba(0,0,0,0.25);
+    text-shadow:
+        0 2px 6px rgba(0,0,0,0.25),
+        0 0 14px rgba(255,105,180,0.6);
 }
 
 .text p {
@@ -90,7 +92,7 @@ body {
     bottom: 150px;
 }
 
-/* SPARKLES */
+/* SPARKLE BLAST */
 .sparkle {
     position: fixed;
     width: 8px;
@@ -107,12 +109,31 @@ body {
         opacity: 0;
     }
 }
+
+/* FALLING SPARKLES */
+.sparkle-fall {
+    position: fixed;
+    top: -10px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: fallDown linear forwards;
+    z-index: 45;
+}
+
+@keyframes fallDown {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
 </style>
 </head>
 
 <body>
 
-<!-- FLOATING TEXT -->
+<!-- TEXT -->
 <div class="text">
     <h1>Happiest Birthday Spoorthiii 💝🥹✨</h1>
     <p>
@@ -121,7 +142,7 @@ body {
     </p>
 </div>
 
-<!-- IMAGE GRID (REORDERED – FIXED) -->
+<!-- IMAGES -->
 <div class="collage">
     <img src="1000037570.jpeg">
     <img src="1000037580.jpeg">
@@ -148,9 +169,9 @@ function openGift() {
     document.getElementById("bunny").classList.add("show");
 }
 
-/* SPARKLE BLAST */
+/* 💥 TAP SPARKLE BLAST */
 function sparkleBlast(x, y) {
-    for (let i = 0; i < 28; i++) {
+    for (let i = 0; i < 30; i++) {
         const s = document.createElement("div");
         s.className = "sparkle";
         s.style.left = x + "px";
@@ -158,13 +179,33 @@ function sparkleBlast(x, y) {
         s.style.background =
             ["#ff4d6d","#ffd166","#9b5de5","#00f5d4","#ffafcc","#cdb4db"]
             [Math.floor(Math.random() * 6)];
-        s.style.setProperty("--x", (Math.random() * 220 - 110) + "px");
-        s.style.setProperty("--y", (Math.random() * 220 - 110) + "px");
+        s.style.setProperty("--x", (Math.random() * 240 - 120) + "px");
+        s.style.setProperty("--y", (Math.random() * 240 - 120) + "px");
         document.body.appendChild(s);
         setTimeout(() => s.remove(), 900);
     }
 }
 
+/* 🌧️ CONTINUOUS FALLING SPARKLES */
+function spawnFallingSparkles() {
+    const count = Math.floor(Math.random() * 51) + 150; // 150–200
+    for (let i = 0; i < count; i++) {
+        const f = document.createElement("div");
+        f.className = "sparkle-fall";
+        f.style.left = Math.random() * 100 + "vw";
+        f.style.background =
+            ["#ff4d6d","#ffd166","#9b5de5","#00f5d4","#ffafcc","#cdb4db"]
+            [Math.floor(Math.random() * 6)];
+        f.style.animationDuration = (Math.random() * 3 + 3) + "s";
+        document.body.appendChild(f);
+        setTimeout(() => f.remove(), 6000);
+    }
+}
+
+/* CONTINUOUS LOOP (every 2.5 seconds) */
+setInterval(spawnFallingSparkles, 2500);
+
+/* CLICK / TOUCH BLAST */
 document.addEventListener("click", e => sparkleBlast(e.clientX, e.clientY));
 document.addEventListener("touchstart", e => {
     const t = e.touches[0];
