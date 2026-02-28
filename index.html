@@ -8,68 +8,100 @@
 body {
     margin: 0;
     padding: 0;
-    min-height: 100vh;
+    height: 100vh;
+    overflow: hidden;
     font-family: 'Segoe UI', sans-serif;
     background: linear-gradient(to right, #ffdde1, #ee9ca7);
-    overflow-x: hidden;
 }
 
-/* IMAGE GRID */
-.collage {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-    padding: 40px 30px 140px;
-    max-width: 1100px;
-    margin: auto;
+/* 🌸 BORDER IMAGES */
+.border {
+    position: absolute;
+    display: flex;
+    gap: 28px;
+    z-index: 5;
 }
 
-.collage img {
-    width: 100%;
-    max-width: 160px;
-    height: 180px;
+.border img {
+    width: 110px;
+    height: 140px;
     object-fit: cover;
-    border-radius: 16px;
+    border-radius: 18px;
     opacity: 0.6;
-    justify-self: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
-/* FLOATING TEXT */
-.text {
+/* TOP */
+.border.top {
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* BOTTOM */
+.border.bottom {
+    bottom: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* LEFT */
+.border.left {
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    flex-direction: column;
+}
+
+/* RIGHT */
+.border.right {
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    flex-direction: column;
+}
+
+/* 🌟 CENTER FLOATING TEXT */
+.center-text {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     text-align: center;
-    margin: 40px auto 10px;
-    animation: floatText 3.5s ease-in-out infinite;
+    z-index: 20;
+    animation: floatText 4s ease-in-out infinite;
 }
 
 @keyframes floatText {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-22px); }
-    100% { transform: translateY(0); }
+    0% { transform: translate(-50%, -50%) translateY(0); }
+    50% { transform: translate(-50%, -50%) translateY(-22px); }
+    100% { transform: translate(-50%, -50%) translateY(0); }
 }
 
-.text h1 {
-    font-size: 28px;
+.center-text h1 {
+    font-size: 30px;
     font-weight: 800;
+    color: #111;
     text-shadow:
-        0 2px 6px rgba(0,0,0,0.25),
-        0 0 14px rgba(255,105,180,0.6);
+        0 3px 8px rgba(0,0,0,0.25),
+        0 0 16px rgba(255,105,180,0.6);
 }
 
-.text p {
-    font-size: 17px;
+.center-text p {
+    font-size: 18px;
     font-weight: 600;
 }
 
-/* GIFT */
+/* 🎁 GIFT */
 .gift-box {
     position: fixed;
-    bottom: 20px;
+    bottom: 25px;
     left: 50%;
     transform: translateX(-50%);
     font-size: 120px;
     cursor: pointer;
     animation: bounce 1.5s infinite;
-    z-index: 20;
+    z-index: 30;
 }
 
 @keyframes bounce {
@@ -77,26 +109,26 @@ body {
     50% { transform: translate(-50%, -14px); }
 }
 
-/* BUNNY */
+/* 🐰 BUNNY */
 .bunny {
     position: fixed;
-    bottom: -250px;
+    bottom: -260px;
     left: 50%;
     transform: translateX(-50%);
     width: 220px;
     transition: bottom 1s ease;
-    z-index: 25;
+    z-index: 35;
 }
 
 .bunny.show {
     bottom: 150px;
 }
 
-/* SPARKLE BLAST */
+/* ✨ SPARKLES */
 .sparkle {
     position: fixed;
-    width: 8px;
-    height: 8px;
+    width: 7px;
+    height: 7px;
     border-radius: 50%;
     pointer-events: none;
     animation: explode 900ms ease-out forwards;
@@ -110,21 +142,20 @@ body {
     }
 }
 
-/* FALLING SPARKLES */
+/* 🌧️ FALLING SPARKLES */
 .sparkle-fall {
     position: fixed;
     top: -10px;
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    pointer-events: none;
-    animation: fallDown linear forwards;
+    animation: fall linear forwards;
     z-index: 45;
 }
 
-@keyframes fallDown {
+@keyframes fall {
     to {
-        transform: translateY(110vh) rotate(360deg);
+        transform: translateY(110vh);
         opacity: 0;
     }
 }
@@ -133,8 +164,32 @@ body {
 
 <body>
 
-<!-- TEXT -->
-<div class="text">
+<!-- TOP BORDER -->
+<div class="border top">
+    <img src="1000037570.jpeg">
+    <img src="1000037580.jpeg">
+</div>
+
+<!-- LEFT BORDER -->
+<div class="border left">
+    <img src="1000375141.jpeg">
+    <img src="1000386482.jpeg">
+</div>
+
+<!-- RIGHT BORDER -->
+<div class="border right">
+    <img src="1000375158.jpeg">
+    <img src="1000386486.jpeg">
+</div>
+
+<!-- BOTTOM BORDER -->
+<div class="border bottom">
+    <img src="1000385134.jpeg">
+    <img src="1000385152.jpeg">
+</div>
+
+<!-- 🌟 CENTER TEXT -->
+<div class="center-text">
     <h1>Happiest Birthday Spoorthiii 💝🥹✨</h1>
     <p>
         Lots and lots of love to you 🥰🫶🏻<br>
@@ -142,25 +197,10 @@ body {
     </p>
 </div>
 
-<!-- IMAGES -->
-<div class="collage">
-    <img src="1000037570.jpeg">
-    <img src="1000037580.jpeg">
-    <img src="1000375155.jpeg">
-
-    <img src="1000375141.jpeg">
-    <img src="1000386482.jpeg">
-    <img src="1000375158.jpeg">
-
-    <img src="1000385134.jpeg">
-    <img src="1000386486.jpeg">
-    <img src="1000385152.jpeg">
-</div>
-
-<!-- GIFT -->
+<!-- 🎁 -->
 <div class="gift-box" onclick="openGift()">🎁</div>
 
-<!-- BUNNY -->
+<!-- 🐰 -->
 <img src="IMG_5845.gif" class="bunny" id="bunny">
 
 <script>
@@ -171,7 +211,7 @@ function openGift() {
 
 /* 💥 TAP SPARKLE BLAST */
 function sparkleBlast(x, y) {
-    for (let i = 0; i < 30; i++) {
+    for (let i = 0; i < 40; i++) {
         const s = document.createElement("div");
         s.className = "sparkle";
         s.style.left = x + "px";
@@ -186,9 +226,9 @@ function sparkleBlast(x, y) {
     }
 }
 
-/* 🌧️ CONTINUOUS FALLING SPARKLES */
-function spawnFallingSparkles() {
-    const count = Math.floor(Math.random() * 51) + 150; // 150–200
+/* 🌧️ CONTINUOUS FALLING SPARKLES (150–200) */
+setInterval(() => {
+    const count = Math.floor(Math.random() * 51) + 150;
     for (let i = 0; i < count; i++) {
         const f = document.createElement("div");
         f.className = "sparkle-fall";
@@ -200,12 +240,8 @@ function spawnFallingSparkles() {
         document.body.appendChild(f);
         setTimeout(() => f.remove(), 6000);
     }
-}
+}, 2600);
 
-/* CONTINUOUS LOOP (every 2.5 seconds) */
-setInterval(spawnFallingSparkles, 2500);
-
-/* CLICK / TOUCH BLAST */
 document.addEventListener("click", e => sparkleBlast(e.clientX, e.clientY));
 document.addEventListener("touchstart", e => {
     const t = e.touches[0];
