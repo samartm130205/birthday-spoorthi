@@ -2,206 +2,186 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Happy Birthday Spoorthiii 💝</title>
+<title>Happy Birthday Spoorthiii 💖</title>
 
 <style>
-body {
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
     height: 100vh;
     overflow: hidden;
     font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(to right, #ffdde1, #ee9ca7);
+    background: linear-gradient(to right, #ffd1dc, #f7a8b8);
+    position: relative;
 }
 
-/* ✨ SPARKLES */
+/* CENTER STACK (TEXT + GIFT + BUNNY) */
+.center-stack {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 6;
+}
+
+/* TEXT */
+.center-stack h1 {
+    font-size: 24px;
+    color: #000;
+}
+
+.center-stack p {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+/* GIFT */
+.gift {
+    font-size: 80px;
+    margin-top: 25px;
+    cursor: pointer;
+    animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+/* BUNNY */
+.bunny {
+    width: 120px;
+    margin-top: 25px;
+}
+
+/* IMAGE STYLE */
+.photo {
+    width: 95px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 18px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+/* TOP */
+.top {
+    position: absolute;
+    top: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 55px;
+}
+
+/* LEFT */
+.left {
+    position: absolute;
+    left: 25px;
+    top: 180px;
+    display: flex;
+    flex-direction: column;
+    gap: 55px;
+}
+
+/* RIGHT */
+.right {
+    position: absolute;
+    right: 25px;
+    top: 180px;
+    display: flex;
+    flex-direction: column;
+    gap: 55px;
+}
+
+/* BOTTOM (EXTRA SPACE) */
+.bottom-left {
+    position: absolute;
+    bottom: 260px;
+    left: 15%;
+}
+
+.bottom-right {
+    position: absolute;
+    bottom: 260px;
+    right: 15%;
+}
+
+/* SPARKLES */
 .sparkle {
     position: fixed;
-    width: 3px;
-    height: 3px;
-    background: rgba(180, 120, 150, 0.7); /* darker sparkles */
+    width: 4px;
+    height: 4px;
+    background: rgba(160, 0, 255, 0.8);
     border-radius: 50%;
     animation: fall linear infinite;
 }
 
 @keyframes fall {
-    from { transform: translateY(-10px); }
-    to { transform: translateY(110vh); }
+    from { transform: translateY(-10px); opacity: 1; }
+    to { transform: translateY(110vh); opacity: 0; }
 }
-
-/* 🖼️ IMAGE STYLE */
-.frame img {
-    width: 110px;
-    height: 140px;
-    object-fit: cover;
-    border-radius: 18px;
-    opacity: 0.75;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-}
-
-/* 🔝 TOP */
-.frame.top {
-    position: absolute;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 30px;
-}
-
-/* ⬅️ LEFT */
-.frame.left {
-    position: absolute;
-    left: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-}
-
-/* ➡️ RIGHT */
-.frame.right {
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-}
-
-/* 💝 CENTER TEXT */
-.center-text {
-    position: absolute;
-    top: 48%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    animation: floatText 4s ease-in-out infinite;
-    z-index: 20;
-}
-
-@keyframes floatText {
-    0% { transform: translate(-50%, -50%) translateY(0); }
-    50% { transform: translate(-50%, -50%) translateY(-22px); }
-    100% { transform: translate(-50%, -50%) translateY(0); }
-}
-
-.center-text h1 {
-    font-size: 32px;
-    font-weight: 800;
-    color: #111;
-    text-shadow:
-        0 4px 10px rgba(0,0,0,0.25),
-        0 0 18px rgba(255,105,180,0.6);
-}
-
-.center-text p {
-    font-size: 18px;
-    font-weight: 600;
-}
-
-/* 🎁 GIFT */
-.gift-box {
-    position: fixed;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 110px;
-    cursor: pointer;
-    animation: bounce 1.5s infinite;
-    z-index: 40;
-}
-
-@keyframes bounce {
-    0%,100% { transform: translate(-50%, 0); }
-    50% { transform: translate(-50%, -14px); }
-}
-
-/* 🐰 BUNNY */
-.bunny {
-    position: fixed;
-    bottom: 140px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 220px;
-    z-index: 50;
-}
-
-/* 🖼️ BUNNY SIDE IMAGES */
-.bunny-left, .bunny-right {
-    position: fixed;
-    bottom: 150px;
-    width: 95px;
-    height: 120px;
-    border-radius: 16px;
-    object-fit: cover;
-    opacity: 0.75;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-    z-index: 45;
-}
-
-.bunny-left { left: 22%; }
-.bunny-right { right: 22%; }
 </style>
 </head>
 
 <body>
 
-<!-- ✨ SPARKLES -->
+<!-- TOP -->
+<div class="top">
+    <img src="1000037570.jpeg" class="photo">
+    <img src="1000037580.jpeg" class="photo">
+    <img src="1000375141.jpeg" class="photo">
+    <img src="1000375155.jpeg" class="photo">
+</div>
+
+<!-- LEFT -->
+<div class="left">
+    <img src="1000375158.jpeg" class="photo">
+    <img src="1000385134.jpeg" class="photo">
+    <img src="1000385152.jpeg" class="photo">
+    <img src="1000386482.jpeg" class="photo">
+</div>
+
+<!-- RIGHT -->
+<div class="right">
+    <img src="1000386486.jpeg" class="photo">
+    <img src="IMG_5869.jpeg" class="photo">
+    <img src="IMG_5870.jpeg" class="photo">
+    <img src="IMG_5871.jpeg" class="photo">
+</div>
+
+<!-- CENTER STACK -->
+<div class="center-stack">
+    <h1>Happiest Birthday Spoorthiii 💝</h1>
+    <p>
+        Lots and lots of love to you 🥹✨<br>
+        Stay blessed always 😊
+    </p>
+
+    <div class="gift">🎁</div>
+
+    <img src="IMG_5845.gif" class="bunny">
+</div>
+
+<!-- BOTTOM -->
+<img src="IMG_5872.jpeg" class="photo bottom-left">
+<img src="IMG_5873.jpeg" class="photo bottom-right">
+
 <script>
-for (let i = 0; i < 160; i++) {
+/* SPARKLES */
+for (let i = 0; i < 180; i++) {
     const s = document.createElement("div");
     s.className = "sparkle";
     s.style.left = Math.random() * 100 + "vw";
-    s.style.animationDuration = 5 + Math.random() * 5 + "s";
+    s.style.animationDuration = (3 + Math.random() * 4) + "s";
     s.style.animationDelay = Math.random() * 5 + "s";
     document.body.appendChild(s);
 }
 </script>
-
-<!-- 🔝 TOP -->
-<div class="frame top">
-    <img src="1000037570.jpeg">
-    <img src="1000037580.jpeg">
-    <img src="1000375141.jpeg">
-    <img src="1000375155.jpeg">
-</div>
-
-<!-- ⬅️ LEFT -->
-<div class="frame left">
-    <img src="1000375158.jpeg">
-    <img src="1000385134.jpeg">
-    <img src="1000385152.jpeg">
-    <img src="1000386482.jpeg">
-</div>
-
-<!-- ➡️ RIGHT -->
-<div class="frame right">
-    <img src="1000386486.jpeg">
-    <img src="IMG_5869.jpeg">
-    <img src="IMG_5870.jpeg">
-    <img src="IMG_5871.jpeg">
-</div>
-
-<!-- 💝 CENTER -->
-<div class="center-text">
-    <h1>Happiest Birthday Spoorthiii 💝🥹✨</h1>
-    <p>
-        Lots and lots of love to you 🥰🫶🏻<br>
-        Stay blessed always 😇✨
-    </p>
-</div>
-
-<!-- 🐰 SIDE IMAGES -->
-<img src="IMG_5872.jpeg" class="bunny-left">
-<img src="IMG_5873.jpeg" class="bunny-right">
-
-<!-- 🐰 -->
-<img src="IMG_5845.gif" class="bunny">
-
-<!-- 🎁 -->
-<div class="gift-box">🎁</div>
 
 </body>
 </html>
