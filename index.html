@@ -13,7 +13,7 @@ body {
     background: linear-gradient(to right, #ffdde1, #ee9ca7);
 }
 
-/* 🌟 SPARKLES */
+/* ✨ CONTINUOUS SPARKLES */
 .sparkle {
     position: fixed;
     top: -10px;
@@ -30,7 +30,7 @@ body {
     to { transform: translateY(110vh); }
 }
 
-/* 🖼 IMAGE STYLE */
+/* 🖼️ IMAGE STYLE */
 .frame img {
     width: 105px;
     height: 135px;
@@ -40,17 +40,17 @@ body {
     box-shadow: 0 10px 22px rgba(0,0,0,0.18);
 }
 
-/* 🔝 TOP */
+/* 🔝 TOP (MATCH BOTTOM SPACING) */
 .frame.top {
     position: absolute;
     top: 25px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 55px;
+    gap: 90px;
 }
 
-/* 🔽 BOTTOM (EXTRA SPACE) */
+/* 🔽 BOTTOM */
 .frame.bottom {
     position: absolute;
     bottom: 40px;
@@ -60,7 +60,7 @@ body {
     gap: 90px;
 }
 
-/* ⬅ LEFT */
+/* ⬅ LEFT (MATCH BOTTOM SPACING) */
 .frame.left {
     position: absolute;
     left: 22px;
@@ -68,10 +68,10 @@ body {
     transform: translateY(-50%);
     display: flex;
     flex-direction: column;
-    gap: 55px;
+    gap: 90px;
 }
 
-/* ➡ RIGHT */
+/* ➡ RIGHT (MATCH BOTTOM SPACING) */
 .frame.right {
     position: absolute;
     right: 22px;
@@ -79,10 +79,10 @@ body {
     transform: translateY(-50%);
     display: flex;
     flex-direction: column;
-    gap: 55px;
+    gap: 90px;
 }
 
-/* 💝 CENTER TEXT */
+/* 💝 CENTER FLOATING TEXT */
 .center-text {
     position: absolute;
     top: 42%;
@@ -169,7 +169,7 @@ body {
     <img src="IMG_5871.jpeg">
 </div>
 
-<!-- 🔽 BOTTOM 4 (MORE SPACE) -->
+<!-- 🔽 BOTTOM 4 -->
 <div class="frame bottom">
     <img src="IMG_5872.jpeg">
     <img src="IMG_5873.jpeg">
@@ -192,7 +192,7 @@ body {
 <!-- 🐰 -->
 <img src="IMG_5845.gif" class="bunny" id="bunny">
 
-<!-- 🌟 SPARKLES SCRIPT -->
+<!-- ✨ SPARKLES SCRIPT -->
 <script>
 function createSparkle() {
     const s = document.createElement("div");
