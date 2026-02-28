@@ -13,17 +13,33 @@ body {
     background: linear-gradient(to right, #ffdde1, #ee9ca7);
 }
 
-/* 🖼️ COMMON IMAGE STYLE */
+/* 🌟 SPARKLES */
+.sparkle {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    background: radial-gradient(circle, #fff, #ff69b4);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    from { transform: translateY(-10px); opacity: 1; }
+    to { transform: translateY(110vh); opacity: 0; }
+}
+
+/* 🖼️ IMAGE STYLE */
 .frame img {
     width: 105px;
     height: 135px;
     object-fit: cover;
     border-radius: 18px;
     opacity: 0.65;
-    box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.18);
 }
 
-/* 🔝 TOP FRAME */
+/* FRAMES */
 .frame.top {
     position: absolute;
     top: 20px;
@@ -33,7 +49,6 @@ body {
     gap: 28px;
 }
 
-/* 🔽 BOTTOM FRAME */
 .frame.bottom {
     position: absolute;
     bottom: 120px;
@@ -43,7 +58,6 @@ body {
     gap: 28px;
 }
 
-/* ⬅️ LEFT FRAME */
 .frame.left {
     position: absolute;
     left: 18px;
@@ -54,7 +68,6 @@ body {
     gap: 30px;
 }
 
-/* ➡️ RIGHT FRAME */
 .frame.right {
     position: absolute;
     right: 18px;
@@ -65,14 +78,14 @@ body {
     gap: 30px;
 }
 
-/* 💝 CENTER FLOATING TEXT */
+/* 💝 CENTER TEXT */
 .center-text {
     position: absolute;
-    top: 45%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    z-index: 20;
+    z-index: 10;
     animation: floatText 4s ease-in-out infinite;
 }
 
@@ -83,12 +96,10 @@ body {
 }
 
 .center-text h1 {
-    font-size: 30px;
+    font-size: 32px;
     font-weight: 800;
     color: #111;
-    text-shadow:
-        0 3px 8px rgba(0,0,0,0.25),
-        0 0 16px rgba(255,105,180,0.6);
+    text-shadow: 0 3px 10px rgba(0,0,0,0.3);
 }
 
 .center-text p {
@@ -105,7 +116,7 @@ body {
     font-size: 120px;
     cursor: pointer;
     animation: bounce 1.5s infinite;
-    z-index: 30;
+    z-index: 20;
 }
 
 @keyframes bounce {
@@ -121,7 +132,7 @@ body {
     transform: translateX(-50%);
     width: 220px;
     transition: bottom 1s ease;
-    z-index: 35;
+    z-index: 25;
 }
 
 .bunny.show {
@@ -134,30 +145,29 @@ body {
 
 <!-- 🔝 TOP -->
 <div class="frame top">
-    <img src="1000037570.jpeg">
-    <img src="1000037580.jpeg">
-    <img src="1000375141.jpeg">
+    <img src="IMG_5869.jpeg">
+    <img src="IMG_5870.jpeg">
+    <img src="IMG_5871.jpeg">
 </div>
 
 <!-- ⬅️ LEFT -->
 <div class="frame left">
-    <img src="1000386482.jpeg">
-    <img src="1000375155.jpeg">
-    <img src="1000385152.jpeg">
+    <img src="IMG_5872.jpeg">
+    <img src="IMG_5873.jpeg">
+    <img src="IMG_5869.jpeg">
 </div>
 
 <!-- ➡️ RIGHT -->
 <div class="frame right">
-    <img src="1000375158.jpeg">
-    <img src="1000386486.jpeg">
-    <img src="1000385134.jpeg">
+    <img src="IMG_5870.jpeg">
+    <img src="IMG_5871.jpeg">
+    <img src="IMG_5872.jpeg">
 </div>
 
 <!-- 🔽 BOTTOM -->
 <div class="frame bottom">
-    <img src="1000375158.jpeg">
-    <img src="1000385134.jpeg">
-    <img src="1000385152.jpeg">
+    <img src="IMG_5873.jpeg">
+    <img src="IMG_5869.jpeg">
 </div>
 
 <!-- 💝 CENTER -->
@@ -176,6 +186,34 @@ body {
 <img src="IMG_5845.gif" class="bunny" id="bunny">
 
 <script>
+/* 🎊 CONTINUOUS SPARKLES */
+setInterval(() => {
+    for (let i = 0; i < 4; i++) {
+        createSparkle(Math.random() * window.innerWidth, -10);
+    }
+}, 120);
+
+function createSparkle(x, y) {
+    const s = document.createElement("div");
+    s.className = "sparkle";
+    s.style.left = x + "px";
+    s.style.top = y + "px";
+    s.style.animationDuration = (3 + Math.random() * 3) + "s";
+    document.body.appendChild(s);
+    setTimeout(() => s.remove(), 6000);
+}
+
+/* 💥 TAP BLAST */
+document.addEventListener("click", e => {
+    for (let i = 0; i < 40; i++) {
+        createSparkle(
+            e.clientX + (Math.random() * 100 - 50),
+            e.clientY + (Math.random() * 100 - 50)
+        );
+    }
+});
+
+/* 🎁 GIFT ACTION */
 function openGift() {
     document.querySelector(".gift-box").innerText = "🎊";
     document.getElementById("bunny").classList.add("show");
