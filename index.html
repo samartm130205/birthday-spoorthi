@@ -13,66 +13,73 @@ body {
     background: linear-gradient(to right, #ffdde1, #ee9ca7);
 }
 
-/* ✨ SPARKLES */
-body::before {
-    content: "";
+/* 🌟 SPARKLES */
+.sparkle {
     position: fixed;
-    inset: 0;
-    background-image: radial-gradient(#8a4cff 1.2px, transparent 1.2px);
-    background-size: 26px 26px;
-    opacity: 0.35;
+    top: -10px;
+    width: 4px;
+    height: 4px;
+    background: rgba(120, 60, 200, 0.9);
+    border-radius: 50%;
     pointer-events: none;
+    z-index: 1;
+    animation: fall linear;
 }
 
-/* 🖼️ IMAGE STYLE */
+@keyframes fall {
+    to { transform: translateY(110vh); }
+}
+
+/* 🖼 IMAGE STYLE */
 .frame img {
     width: 105px;
     height: 135px;
     object-fit: cover;
     border-radius: 18px;
-    box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+    opacity: 0.7;
+    box-shadow: 0 10px 22px rgba(0,0,0,0.18);
 }
 
 /* 🔝 TOP */
 .frame.top {
     position: absolute;
-    top: 18px;
+    top: 25px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 30px;
+    gap: 55px;
 }
 
-/* ⬅️ LEFT */
-.frame.left {
-    position: absolute;
-    left: 18px;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    flex-direction: column;
-    gap: 34px;
-}
-
-/* ➡️ RIGHT */
-.frame.right {
-    position: absolute;
-    right: 18px;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    flex-direction: column;
-    gap: 34px;
-}
-
-/* 🔽 BOTTOM (MORE SPACE) */
+/* 🔽 BOTTOM (EXTRA SPACE) */
 .frame.bottom {
     position: absolute;
-    bottom: 30px;
+    bottom: 40px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 70px;
+    gap: 90px;
+}
+
+/* ⬅ LEFT */
+.frame.left {
+    position: absolute;
+    left: 22px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 55px;
+}
+
+/* ➡ RIGHT */
+.frame.right {
+    position: absolute;
+    right: 22px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 55px;
 }
 
 /* 💝 CENTER TEXT */
@@ -83,6 +90,12 @@ body::before {
     transform: translate(-50%, -50%);
     text-align: center;
     z-index: 10;
+    animation: floatText 4s ease-in-out infinite;
+}
+
+@keyframes floatText {
+    0%,100% { transform: translate(-50%, -50%) translateY(0); }
+    50% { transform: translate(-50%, -50%) translateY(-20px); }
 }
 
 .center-text h1 {
@@ -97,29 +110,35 @@ body::before {
 
 /* 🎁 GIFT */
 .gift-box {
-    margin-top: 20px;
+    position: absolute;
+    top: 58%;
+    left: 50%;
+    transform: translateX(-50%);
     font-size: 90px;
     cursor: pointer;
-    animation: bounce 1.4s infinite;
+    animation: bounce 1.5s infinite;
+    z-index: 20;
 }
 
 @keyframes bounce {
-    0%,100% { transform: translateY(0); }
-    50% { transform: translateY(-12px); }
+    50% { transform: translate(-50%, -15px); }
 }
 
 /* 🐰 BUNNY */
 .bunny {
-    margin-top: 18px;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translateX(-50%);
     width: 200px;
     opacity: 0;
-    transform: scale(0.5);
-    transition: all 0.8s ease;
+    transition: all 1s ease;
+    z-index: 25;
 }
 
 .bunny.show {
     opacity: 1;
-    transform: scale(1);
+    transform: translate(-50%, -30px);
 }
 </style>
 </head>
@@ -131,26 +150,26 @@ body::before {
     <img src="1000037570.jpeg">
     <img src="1000037580.jpeg">
     <img src="1000375141.jpeg">
+    <img src="1000375155.jpeg">
+</div>
+
+<!-- ⬅ LEFT 4 -->
+<div class="frame left">
+    <img src="1000386482.jpeg">
+    <img src="1000386486.jpeg">
+    <img src="1000385134.jpeg">
     <img src="IMG_5869.jpeg">
 </div>
 
-<!-- ⬅️ LEFT 4 -->
-<div class="frame left">
-    <img src="1000386482.jpeg">
-    <img src="1000375155.jpeg">
-    <img src="1000385152.jpeg">
-    <img src="IMG_5870.jpeg">
-</div>
-
-<!-- ➡️ RIGHT 4 -->
+<!-- ➡ RIGHT 4 -->
 <div class="frame right">
     <img src="1000375158.jpeg">
-    <img src="1000386486.jpeg">
-    <img src="1000385134.jpeg">
+    <img src="1000385152.jpeg">
+    <img src="IMG_5870.jpeg">
     <img src="IMG_5871.jpeg">
 </div>
 
-<!-- 🔽 BOTTOM 4 -->
+<!-- 🔽 BOTTOM 4 (MORE SPACE) -->
 <div class="frame bottom">
     <img src="IMG_5872.jpeg">
     <img src="IMG_5873.jpeg">
@@ -158,22 +177,36 @@ body::before {
     <img src="IMG_5882.jpeg">
 </div>
 
-<!-- 💝 CENTER -->
+<!-- 💝 CENTER TEXT -->
 <div class="center-text">
     <h1>Happiest Birthday Spoorthiii 💝🥹✨</h1>
     <p>
         Lots and lots of love to you 🥰🫶🏻<br>
         Stay blessed always 😇✨
     </p>
-
-    <!-- 🎁 -->
-    <div class="gift-box" onclick="openGift()">🎁</div>
-
-    <!-- 🐰 -->
-    <img src="IMG_5845.gif" class="bunny" id="bunny">
 </div>
 
+<!-- 🎁 -->
+<div class="gift-box" onclick="openGift()">🎁</div>
+
+<!-- 🐰 -->
+<img src="IMG_5845.gif" class="bunny" id="bunny">
+
+<!-- 🌟 SPARKLES SCRIPT -->
 <script>
+function createSparkle() {
+    const s = document.createElement("div");
+    s.className = "sparkle";
+    s.style.left = Math.random() * 100 + "vw";
+    s.style.animationDuration = (3 + Math.random() * 4) + "s";
+    document.body.appendChild(s);
+    setTimeout(() => s.remove(), 8000);
+}
+
+setInterval(() => {
+    for (let i = 0; i < 6; i++) createSparkle();
+}, 200);
+
 function openGift() {
     document.querySelector(".gift-box").innerText = "🎊";
     document.getElementById("bunny").classList.add("show");
