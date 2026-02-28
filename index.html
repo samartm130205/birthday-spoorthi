@@ -2,69 +2,73 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Happy Birthday Sassa 💝</title>
+<title>Happy Birthday Spoorthiii 💝</title>
 
 <style>
 body {
     margin: 0;
-    padding: 0;
     height: 100vh;
     overflow: hidden;
     font-family: 'Segoe UI', sans-serif;
     background: linear-gradient(to right, #ffdde1, #ee9ca7);
 }
 
-/* 🌸 BORDER IMAGES */
-.border {
-    position: absolute;
-    display: flex;
-    gap: 28px;
-    z-index: 5;
-}
-
-.border img {
-    width: 110px;
-    height: 140px;
+/* 🖼️ COMMON IMAGE STYLE */
+.frame img {
+    width: 105px;
+    height: 135px;
     object-fit: cover;
     border-radius: 18px;
-    opacity: 0.6;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    opacity: 0.65;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.15);
 }
 
-/* TOP */
-.border.top {
+/* 🔝 TOP FRAME */
+.frame.top {
+    position: absolute;
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
+    display: flex;
+    gap: 28px;
 }
 
-/* BOTTOM */
-.border.bottom {
+/* 🔽 BOTTOM FRAME */
+.frame.bottom {
+    position: absolute;
     bottom: 120px;
     left: 50%;
     transform: translateX(-50%);
+    display: flex;
+    gap: 28px;
 }
 
-/* LEFT */
-.border.left {
+/* ⬅️ LEFT FRAME */
+.frame.left {
+    position: absolute;
     left: 18px;
     top: 50%;
     transform: translateY(-50%);
+    display: flex;
     flex-direction: column;
+    gap: 30px;
 }
 
-/* RIGHT */
-.border.right {
+/* ➡️ RIGHT FRAME */
+.frame.right {
+    position: absolute;
     right: 18px;
     top: 50%;
     transform: translateY(-50%);
+    display: flex;
     flex-direction: column;
+    gap: 30px;
 }
 
-/* 🌟 CENTER FLOATING TEXT */
+/* 💝 CENTER FLOATING TEXT */
 .center-text {
     position: absolute;
-    top: 40%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
@@ -123,72 +127,40 @@ body {
 .bunny.show {
     bottom: 150px;
 }
-
-/* ✨ SPARKLES */
-.sparkle {
-    position: fixed;
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    pointer-events: none;
-    animation: explode 900ms ease-out forwards;
-    z-index: 50;
-}
-
-@keyframes explode {
-    to {
-        transform: translate(var(--x), var(--y)) scale(0);
-        opacity: 0;
-    }
-}
-
-/* 🌧️ FALLING SPARKLES */
-.sparkle-fall {
-    position: fixed;
-    top: -10px;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    animation: fall linear forwards;
-    z-index: 45;
-}
-
-@keyframes fall {
-    to {
-        transform: translateY(110vh);
-        opacity: 0;
-    }
-}
 </style>
 </head>
 
 <body>
 
-<!-- TOP BORDER -->
-<div class="border top">
+<!-- 🔝 TOP -->
+<div class="frame top">
     <img src="1000037570.jpeg">
     <img src="1000037580.jpeg">
-</div>
-
-<!-- LEFT BORDER -->
-<div class="border left">
     <img src="1000375141.jpeg">
-    <img src="1000386482.jpeg">
 </div>
 
-<!-- RIGHT BORDER -->
-<div class="border right">
+<!-- ⬅️ LEFT -->
+<div class="frame left">
+    <img src="1000386482.jpeg">
+    <img src="1000375155.jpeg">
+    <img src="1000385152.jpeg">
+</div>
+
+<!-- ➡️ RIGHT -->
+<div class="frame right">
     <img src="1000375158.jpeg">
     <img src="1000386486.jpeg">
+    <img src="1000385134.jpeg">
 </div>
 
-<!-- BOTTOM BORDER -->
-<div class="border bottom">
+<!-- 🔽 BOTTOM -->
+<div class="frame bottom">
+    <img src="1000375158.jpeg">
     <img src="1000385134.jpeg">
     <img src="1000385152.jpeg">
 </div>
 
-<!-- 🌟 CENTER TEXT -->
+<!-- 💝 CENTER -->
 <div class="center-text">
     <h1>Happiest Birthday Spoorthiii 💝🥹✨</h1>
     <p>
@@ -208,45 +180,6 @@ function openGift() {
     document.querySelector(".gift-box").innerText = "🎊";
     document.getElementById("bunny").classList.add("show");
 }
-
-/* 💥 TAP SPARKLE BLAST */
-function sparkleBlast(x, y) {
-    for (let i = 0; i < 40; i++) {
-        const s = document.createElement("div");
-        s.className = "sparkle";
-        s.style.left = x + "px";
-        s.style.top = y + "px";
-        s.style.background =
-            ["#ff4d6d","#ffd166","#9b5de5","#00f5d4","#ffafcc","#cdb4db"]
-            [Math.floor(Math.random() * 6)];
-        s.style.setProperty("--x", (Math.random() * 240 - 120) + "px");
-        s.style.setProperty("--y", (Math.random() * 240 - 120) + "px");
-        document.body.appendChild(s);
-        setTimeout(() => s.remove(), 900);
-    }
-}
-
-/* 🌧️ CONTINUOUS FALLING SPARKLES (150–200) */
-setInterval(() => {
-    const count = Math.floor(Math.random() * 51) + 150;
-    for (let i = 0; i < count; i++) {
-        const f = document.createElement("div");
-        f.className = "sparkle-fall";
-        f.style.left = Math.random() * 100 + "vw";
-        f.style.background =
-            ["#ff4d6d","#ffd166","#9b5de5","#00f5d4","#ffafcc","#cdb4db"]
-            [Math.floor(Math.random() * 6)];
-        f.style.animationDuration = (Math.random() * 3 + 3) + "s";
-        document.body.appendChild(f);
-        setTimeout(() => f.remove(), 6000);
-    }
-}, 2600);
-
-document.addEventListener("click", e => sparkleBlast(e.clientX, e.clientY));
-document.addEventListener("touchstart", e => {
-    const t = e.touches[0];
-    sparkleBlast(t.clientX, t.clientY);
-});
 </script>
 
 </body>
