@@ -13,7 +13,7 @@ body {
     background: linear-gradient(to right, #ffdde1, #ee9ca7);
 }
 
-/* ✨ CONTINUOUS SPARKLES */
+/* 🌧️ FALLING SPARKLES */
 .sparkle {
     position: fixed;
     top: -10px;
@@ -30,6 +30,17 @@ body {
     to { transform: translateY(110vh); }
 }
 
+/* 🚀 CORNER SPARKLES */
+.corner-sparkle {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    background: rgba(160, 90, 255, 0.95);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 5;
+}
+
 /* 🖼️ IMAGE STYLE */
 .frame img {
     width: 105px;
@@ -40,7 +51,7 @@ body {
     box-shadow: 0 10px 22px rgba(0,0,0,0.18);
 }
 
-/* 🔝 TOP (MATCH BOTTOM SPACING) */
+/* 🔝 TOP */
 .frame.top {
     position: absolute;
     top: 25px;
@@ -60,7 +71,7 @@ body {
     gap: 90px;
 }
 
-/* ⬅ LEFT (MATCH BOTTOM SPACING) */
+/* ⬅ LEFT */
 .frame.left {
     position: absolute;
     left: 22px;
@@ -71,7 +82,7 @@ body {
     gap: 90px;
 }
 
-/* ➡ RIGHT (MATCH BOTTOM SPACING) */
+/* ➡ RIGHT */
 .frame.right {
     position: absolute;
     right: 22px;
@@ -82,10 +93,10 @@ body {
     gap: 90px;
 }
 
-/* 💝 CENTER FLOATING TEXT */
+/* 💝 CENTER TEXT */
 .center-text {
     position: absolute;
-    top: 42%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
@@ -111,7 +122,7 @@ body {
 /* 🎁 GIFT */
 .gift-box {
     position: absolute;
-    top: 58%;
+    top: 55%;
     left: 50%;
     transform: translateX(-50%);
     font-size: 90px;
@@ -127,7 +138,7 @@ body {
 /* 🐰 BUNNY */
 .bunny {
     position: absolute;
-    top: 70%;
+    top: 68%;
     left: 50%;
     transform: translateX(-50%);
     width: 200px;
@@ -192,8 +203,8 @@ body {
 <!-- 🐰 -->
 <img src="IMG_5845.gif" class="bunny" id="bunny">
 
-<!-- ✨ SPARKLES SCRIPT -->
 <script>
+/* 🌧️ CONTINUOUS FALLING SPARKLES */
 function createSparkle() {
     const s = document.createElement("div");
     s.className = "sparkle";
@@ -207,6 +218,41 @@ setInterval(() => {
     for (let i = 0; i < 6; i++) createSparkle();
 }, 200);
 
+/* 🚀 CORNER → CENTER SPARKLES */
+function shootFromCorner(x, y) {
+    const cx = window.innerWidth / 2;
+    const cy = window.innerHeight / 2;
+
+    for (let i = 0; i < 12; i++) {
+        const s = document.createElement("div");
+        s.className = "corner-sparkle";
+        s.style.left = x + "px";
+        s.style.top = y + "px";
+
+        const angle = Math.atan2(cy - y, cx - x);
+        const distance = 500 + Math.random() * 300;
+
+        s.animate([
+            { transform: "translate(0,0)", opacity: 1 },
+            { transform: `translate(${Math.cos(angle)*distance}px, ${Math.sin(angle)*distance}px)`, opacity: 0 }
+        ], {
+            duration: 1400,
+            easing: "ease-out"
+        });
+
+        document.body.appendChild(s);
+        setTimeout(() => s.remove(), 2000);
+    }
+}
+
+setInterval(() => {
+    shootFromCorner(0, 0);
+    shootFromCorner(window.innerWidth, 0);
+    shootFromCorner(0, window.innerHeight);
+    shootFromCorner(window.innerWidth, window.innerHeight);
+}, 1800);
+
+/* 🎁 GIFT ACTION */
 function openGift() {
     document.querySelector(".gift-box").innerText = "🎊";
     document.getElementById("bunny").classList.add("show");
