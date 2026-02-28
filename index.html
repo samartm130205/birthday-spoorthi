@@ -63,21 +63,28 @@ h1 {
     font-size: 26px;
 }
 
-/* Gift Box */
+/* 🎁 BIG Gift Box */
 .gift-box {
     position: fixed;
-    bottom: 20px;
+    bottom: 25px;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 60px;
+    font-size: 130px;              /* BIG SIZE */
     cursor: pointer;
     animation: bounce 1.5s infinite;
     z-index: 20;
+    filter: drop-shadow(0 12px 25px rgba(0,0,0,0.35));
+    transition: transform 0.3s ease;
 }
 
+.gift-box:active {
+    transform: translateX(-50%) scale(1.15);
+}
+
+/* Bounce animation */
 @keyframes bounce {
     0%,100% { transform: translate(-50%, 0); }
-    50% { transform: translate(-50%, -12px); }
+    50% { transform: translate(-50%, -15px); }
 }
 
 /* Bunny GIF */
@@ -92,7 +99,7 @@ h1 {
 }
 
 .bunny.show {
-    bottom: 120px;
+    bottom: 140px;
 }
 
 /* Confetti */
@@ -127,16 +134,17 @@ h1 {
 
 <!-- Moving Text -->
 <div class="text">
-    <h1>Happiest Birthday Spoorthiii💝🥹✨</h1>
+    <h1>Happiest Birthday Spoorthiii 💝🥹✨</h1>
     <p>
-        Lots and lots of love to you 🥰🫶🏻 Stay blessed always 😇✨ <br><br>   
+        Lots and lots of love to you 🥰🫶🏻  
+        Stay blessed always 😇✨
     </p>
 </div>
 
 <!-- Gift Box -->
 <div class="gift-box" onclick="openGift()">🎁</div>
 
-<!-- Bunny GIF (UPDATED NAME) -->
+<!-- Bunny GIF -->
 <img src="IMG_5845.gif" class="bunny" id="bunny">
 
 <script>
